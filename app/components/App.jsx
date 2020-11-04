@@ -2,7 +2,9 @@ import React from 'react';
 import uuid from 'uuid';
 import Notes from './Notes';
 
-export default class App extends React.Component {
+import connect from '../libs/connect';
+
+class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -27,6 +29,7 @@ export default class App extends React.Component {
 		const { notes } = this.state;
 		return (
 			<div>
+				{this.props.test}
 				<button
 					className={"add-note"}
 					onClick={this.addNote}>
@@ -61,6 +64,7 @@ export default class App extends React.Component {
 		});
 		*/
 	}
+
 	activateNoteEdit = (id) => {
 		this.setState({
 			notes: this.state.notes.map(note => {
@@ -91,3 +95,7 @@ export default class App extends React.Component {
 		});
 	};
 }
+
+export default connect(() => ({
+	test: 'test'
+}))(App)
