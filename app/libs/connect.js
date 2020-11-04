@@ -21,7 +21,7 @@ function connect(state = () => { }, actions = {}, target) {
             const { flux } = this.context;
             flux.FinalStore.listen(this.handleChange);
         }
-        
+
         componentWillUnmount() {
             const { flux } = this.context;
             flux.FinalStore.unlisten(this.handleChange);
