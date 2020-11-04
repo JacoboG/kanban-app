@@ -4,21 +4,7 @@ import NoteActions from '../actions/NoteActions';
 export default class NoteStore {
   constructor() {
     this.bindActions(NoteActions);
-
-    this.notes = [
-      {
-        id: uuid.v4(),
-        task: 'Store - Aprender React'
-      },
-      {
-        id: uuid.v4(),
-        task: 'Store - Crear Ejemplo'
-      },
-      {
-        id: uuid.v4(),
-        task: 'Store - Avanzar en React'
-      }
-    ];
+    this.notes = [];
   }
 
   create(note) {
