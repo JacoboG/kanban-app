@@ -46,7 +46,7 @@ export default connect(() => ({}), {
 	return (
 		<div className="lane-header" onClick={activateLaneEdit} {...props}>
 			<div className="lane-add-note">
-				<button onClick={addNote}>+ Añadir Nota</button>
+				<button onClick={addNote}>+</button>
 			</div>
 			<Editable className="lane-name" editing={lane.editing} value={lane.name} onEdit={editName} />
 
