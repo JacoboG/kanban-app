@@ -15,6 +15,21 @@ export default class LaneStore {
     });
   }
 
+  update(updatedLane) {
+    this.setState({
+      lanes: this.lanes.map(lane => {
+        if (lane.id === updatedLane.id) {
+          console.log('lane: ');
+          console.log(lane);
+          console.log('updatedLane: ');
+          console.log( updatedLane);
+          return Object.assign({}, lane, updatedLane);
+        }
+        return lane;
+      })
+    });
+  }
+
   attachToLane({ laneId, noteId }) {
     this.setState({
       lanes: this.lanes.map(lane => {
