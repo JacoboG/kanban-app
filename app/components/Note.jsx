@@ -2,9 +2,10 @@ import React from 'react';
 import { compose } from 'redux';
 import { DragSource, DropTarget } from 'react-dnd';
 import ItemTypes from '../constants/itemTypes';
-import connect from '../libs/connect';
+
 const Note = ({
 	connectDragSource, connectDropTarget,
+	onMove, id,
 	children, ...props
 }) => {
 	return compose(connectDragSource, connectDropTarget)(
@@ -16,15 +17,21 @@ const Note = ({
 
 const noteSource = {
 	beginDrag(props) {
-		console.log('begin dragging note', props);
-		return {};
+		return {
+			id: props.id
+		};
 	}
 };
 
 const noteTarget = {
 	hover(targetProps, monitor) {
+		const targetId = targetProps.id;
 		const sourceProps = monitor.getItem();
-		console.log('dragging note', sourceProps, targetProps);
+		const sourceId = sourceProps.id;
+
+		if (sourceId !== targetId) {
+			targetProps.onMove({ sourceId, targetId })
+		}
 	}
 };
 

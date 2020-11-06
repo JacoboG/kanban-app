@@ -14,7 +14,10 @@ export default ({
 				<li key={id}>
 					<Note
 						className="note"
-						onClick={onNoteClick.bind(null, id)}>
+						id={id}
+						onClick={onNoteClick.bind(null, id)}
+						onMove={({ sourceId, targetId }) =>
+							console.log('moving from', sourceId, 'to', targetId)}>
 						<Editable
 							editing={editing}
 							value={task}
