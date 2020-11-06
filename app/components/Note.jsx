@@ -6,10 +6,13 @@ import ItemTypes from '../constants/itemTypes';
 const Note = ({
 	connectDragSource, connectDropTarget,
 	isDragging, isOver,
-	onMove, id,
+	onMove, id, editing,
 	children, ...props
 }) => {
-	return compose(connectDragSource, connectDropTarget)(
+	// Pasar de largo si está editando
+	const dragSource = editing ? a => a : connectDragSource;
+
+	return compose(dragSource, connectDropTarget)(
 		<div {...props}>
 			{children}
 		</div>
