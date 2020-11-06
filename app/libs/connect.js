@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+
 export default (state, actions) => {
     if (typeof state === 'function' ||
         (typeof state === 'object' && Object.keys(state).length)) {
@@ -45,7 +45,7 @@ function connect(state = () => { }, actions = {}, target) {
         }
     }
     Connect.contextTypes = {
-        flux: PropTypes.object.isRequired
+        flux: React.PropTypes.object.isRequired
     }
     return Connect;
 }
