@@ -13,7 +13,7 @@ const Note = ({
 	const dragSource = editing ? a => a : connectDragSource;
 
 	return compose(dragSource, connectDropTarget)(
-		<div {...props}>
+		<div style={{ opacity: isDragging || isOver ? 0 : 1 }} {...props}>
 			{children}
 		</div>
 	);
