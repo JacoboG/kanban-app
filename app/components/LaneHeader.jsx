@@ -40,6 +40,10 @@ export default connect(() => ({}), {
 	const deleteLane = e => {
 		// Evita que se ejecuten los eventos naturales de javascript del componente
 		e.stopPropagation();
+		lane.notes.map(noteId => {
+			LaneActions.detachFromLane({ laneId: lane.id, noteId });
+			NoteActions.delete(noteId);
+		});
 		LaneActions.delete(lane.id);
 	}
 

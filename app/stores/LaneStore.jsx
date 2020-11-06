@@ -46,11 +46,11 @@ export default class LaneStore {
     });
   }
 
-  detachFromLane(laneId, noteId) {
+  detachFromLane(options) {
     this.setState({
       lanes: this.lanes.map(lane => {
-        if (lane.id === laneId) {
-          lane.notes = lane.notes.filter(note => note !== noteId);
+        if (lane.id === options.laneId) {
+          lane.notes = lane.notes.filter(note => note !== options.noteId);
         }
         return lane;
       })

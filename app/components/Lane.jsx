@@ -14,10 +14,7 @@ const Lane = ({
 
 	const deleteNote = (noteId, e) => {
 		e.stopPropagation();
-		LaneActions.detachFromLane({
-			laneId: lane.id,
-			noteId
-		});
+		LaneActions.detachFromLane({ laneId: lane.id, noteId });
 		NoteActions.delete(noteId);
 	};
 
